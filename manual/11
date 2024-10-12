@@ -1,0 +1,42 @@
+    Dark Side Of the Moon
+=============================
+NOTICE: this is REAL challenge! You can give up.
+I will just post all the result and program here
+and hope this will give you some insight about
+how the computer programming language is built
+from the very simple piece.
+
+What you will learn here in this manual:
+  * write a recursive parser for a simple
+    language (LISP-1) and iterpret it using
+    our lambda calculus
+
+    we will only construct 7 basic functions,
+    and I will show you that these 7 functions,
+    could served as 7 basic theorem mathematically
+    and build the whole computation system.
+  * you can consider using this LISP-1 to
+    implement this lambda calculus interpreter,
+    which is truly possible
+  * you can consider using method introduced in
+    this manual to build a compiler from lambda
+    calculus to asm, so you could run this
+    lambda calculus in bare metal
+  * consider reading
+
+Start: Grammar definition
+We define the new LISP-1 like grammar as below:
+
+   <symbol> := [a-z]+
+   <space>  := S
+   <(>      := C
+   <)>      := D
+   <list>   := <(> <symbol>* <)>
+
+So we could write the parser like below:
+
+   .l(s) 
+
+7 Theorem:
+We define the 7 basic operation as below:
+  *

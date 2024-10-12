@@ -1,0 +1,34 @@
+    Boolean Operation
+=========================
+We could define true and false value like
+below: (eval in LVM REPL)
+
+    .l(𝐓) (λxy|x) -> true
+    .l(𝐅) (λxy|y) -> false
+
+Consider the expression `PQR', where `Q' and `R'
+are arbitray expressions and `P' is either `T'
+or `F'. So we would have: (eval in LVM REPL)
+
+    #𝐓 Q R -> Q
+    #𝐅 Q R -> R
+
+Seems to be familiar? It likes the following
+expression (in Python):
+
+    Q if P else R
+
+So we could then construct more logical functions:
+(eval in LVM REPL)
+
+    .l(¬) (λw|w#𝐅#𝐓) -> not
+    .l(∧) (λwz|wz#𝐅) -> and
+    .l(∨) (λwz|w#𝐓z) -> or
+
+And here is our first test function:
+
+    .l(ζ) (λx|x #𝐅 #¬ #𝐅) -> zerop
+
+Example:
+  * #ζ #0 -> (λxy|x) == #𝐓
+  * #ζ #1 -> (λxy|y) == #𝐅

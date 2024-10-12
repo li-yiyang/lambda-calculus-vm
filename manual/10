@@ -1,0 +1,24 @@
+    Cheet Macro List
+=========================
+You can just C-c C-v the below macro definition:
+
+  .s
+  .l(𝕤) (λxyz|y(xyz))                   -> successor
+  .l(+) (λjk|k#𝕤j)                      -> addition
+  .l(×) (λxys|x(ys))                    -> multiplication
+  .l(𝕡) (λxsz|x(λgh|h(gs))(λu|z)(λu|u)) -> predecessor
+  .l(∸) (λxy|y#𝕡x)                      -> monus subtraction
+  .l(𝕖) (λbe|eb)                        -> b^e exp
+  .l(𝕋) (λxy|x)                         -> true
+  .l(𝔽) (λxy|y)                         -> false
+  .l(¬) (λw|w#𝔽#𝕋)                      -> not
+  .l(∧) (λwz|wz#𝔽)                      -> and
+  .l(∨) (λwz|w#𝕋z)                      -> or
+  .l(ζ) (λx|x #𝔽 #¬ #𝔽)                 -> zerop
+  .l(𝕐) (λy|((λx|y(xx))(λx|y(xx))))     -> Y combinator
+  .l(𝕔) (λ A B | (λ x | x A B))         -> cons
+  .l(𝕒) (λ x | x (λ ab | a))            -> car: get first  of cons
+  .l(𝕕) (λ x | x (λ ab | b))            -> cdr: get second of cons
+  .l(𝕟) (λ x a b | a)                   -> Nil
+  .l(ℕ) (λ n | n (λAB|#𝔽))              -> Nilp
+  .s

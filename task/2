@@ -1,0 +1,170 @@
+    LVM 1: Boolean
+======================
+Here is a flag testing lambda calculus function:
+
+    (λA|(λB|(λC|(λD|(λE|(λF|(λG|(λH|(λI|(λJ|(λK|(λL|((((λw|((w(λ\
+    x|(λy|y)))(λx|(λy|x))))(((λa|(λb|(((λw|(λz|((wz)(λx|(λy|y)))\
+    ))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|\
+    (λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|\
+    z))(λu|u))))))x)))a)b)))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|\
+    y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x\
+    (λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))b)a)))))((λb|(((λx|(\
+    λy|((y(λx|(λy|(λz|(y((xy)z))))))x)))(((λx|(λy|(λs|(x(ys)))))\
+    b)(λs|(λz|(sz)))))(λs|(λz|(s(s(sz)))))))(λs|(λz|(s(s(s(s(sz)\
+    ))))))))K))(λx|(λy|y)))((((λw|((w(λx|(λy|y)))(λx|(λy|x))))((\
+    (λa|(λb|(((λw|(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λ\
+    w|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx\
+    |(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))(\
+    (λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy\
+    |y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))\
+    (λu|u))))))x)))b)a)))))((λb|(((λx|(λy|((y(λx|(λy|(λz|(y((xy)\
+    z))))))x)))(((λx|(λy|(λs|(x(ys)))))b)(λs|(λz|(sz)))))(λs|(λz\
+    |(s(s(s(sz))))))))(λs|(λz|(s(s(s(s(s(s(s(s(sz)))))))))))))C)\
+    )(λx|(λy|y)))((((λw|((w(λx|(λy|y)))(λx|(λy|x))))(((λa|(λb|((\
+    (λw|(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(\
+    λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(\
+    ((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((x(λ\
+    x|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λ\
+    x|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u)))))\
+    )x)))b)a)))))((λb|(λs|(λz|(s(s(s(s(s(s(sz))))))))))(λs|(λz|(\
+    s(s(s(s(s(s(s(s(sz)))))))))))))J))(λx|(λy|y)))(((((λa|(λb|((\
+    (λw|(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(\
+    λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(\
+    ((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((x(λ\
+    x|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λ\
+    x|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u)))))\
+    )x)))b)a)))))((λb|(((λx|(λy|((y(λx|(λy|(λz|(y((xy)z))))))x))\
+    )(λs|(λz|(s(s(sz))))))(((λx|(λy|(λs|(x(ys)))))b)(λs|(λz|(sz)\
+    )))))(λs|(λz|(s(s(s(s(s(sz))))))))))I)(((((λa|(λb|(((λw|(λz|\
+    ((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(\
+    λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(\
+    λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((x(λx|(λy|y)\
+    ))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((\
+    y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))b)a\
+    )))))((λb|(((λx|(λy|((y(λx|(λy|(λz|(y((xy)z))))))x)))(((λx|(\
+    λy|(λs|(x(ys)))))b)(((λx|(λy|((y(λx|(λy|(λz|(y((xy)z))))))x)\
+    ))(λs|(λz|(sz))))(((λx|(λy|(λs|(x(ys)))))b)(λs|(λz|(sz))))))\
+    )(λs|(λz|(s(sz))))))(λs|(λz|(s(s(sz)))))))H)(((((λa|(λb|(((λ\
+    w|(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy\
+    |y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((\
+    x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((x(λx|\
+    (λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|\
+    (λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x\
+    )))b)a)))))((λb|(λs|(λz|(s(s(s(sz)))))))(λs|(λz|(s(s(s(s(s(s\
+    (sz)))))))))))E)((((λw|((w(λx|(λy|y)))(λx|(λy|x))))(((λa|(λb\
+    |(((λw|(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λ\
+    x|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λ\
+    z|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((\
+    x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(\
+    ((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))\
+    ))))x)))b)a)))))((λb|(λs|(λz|(sz))))(λs|(λz|(s(s(s(sz)))))))\
+    )B))(λx|(λy|y)))(((((λa|(λb|(((λw|(λz|((wz)(λx|(λy|y)))))((λ\
+    x|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y\
+    ))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λ\
+    u|u))))))x)))a)b)))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(\
+    λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(\
+    λh|(h(gs)))))(λu|z))(λu|u))))))x)))b)a)))))((λb|(((λx|(λy|((\
+    y(λx|(λy|(λz|(y((xy)z))))))x)))(((λx|(λy|(λs|(x(ys)))))b)(λs\
+    |(λz|(s(s(sz)))))))(λs|(λz|(s(sz))))))(λs|(λz|(s(s(s(s(s(sz)\
+    )))))))))L)((((λw|((w(λx|(λy|y)))(λx|(λy|x))))(((λa|(λb|(((λ\
+    w|(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy\
+    |y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((\
+    x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((x(λx|\
+    (λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|\
+    (λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x\
+    )))b)a)))))((λb|(((λx|(λy|((y(λx|(λy|(λz|(y((xy)z))))))x)))(\
+    ((λx|(λy|(λs|(x(ys)))))b)(λs|(λz|(s(sz))))))(λs|(λz|z))))(λs\
+    |(λz|(s(s(s(s(s(sz))))))))))A))(λx|(λy|y)))(((((λa|(λb|(((λw\
+    |(λz|((wz)(λx|(λy|y)))))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|\
+    y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x\
+    (λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)))a)b)))((λx|(((x(λx|(\
+    λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y))))(((λx|(\
+    λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u))))))x)\
+    ))b)a)))))((λb|(λs|(λz|(s(sz)))))(λs|(λz|(s(s(s(s(s(s(s(s(s(\
+    sz))))))))))))))D)(((((λa|(λb|(((λw|(λz|((wz)(λx|(λy|y)))))(\
+    (λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy\
+    |y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))\
+    (λu|u))))))x)))a)b)))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y))\
+    )(λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg\
+    |(λh|(h(gs)))))(λu|z))(λu|u))))))x)))b)a)))))((λb|(((λx|(λy|\
+    ((y(λx|(λy|(λz|(y((xy)z))))))x)))(((λx|(λy|(λs|(x(ys)))))b)(\
+    λs|(λz|(sz)))))(λs|(λz|(sz)))))(λs|(λz|(s(s(s(s(s(s(s(s(s(sz\
+    ))))))))))))))G)(((((λa|(λb|(((λw|(λz|((wz)(λx|(λy|y)))))((λ\
+    x|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(λx|(λy|x)))))(λx|(λy|y\
+    ))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λ\
+    u|u))))))x)))a)b)))((λx|(((x(λx|(λy|y)))(λw|((w(λx|(λy|y)))(\
+    λx|(λy|x)))))(λx|(λy|y))))(((λx|(λy|((y(λx|(λs|(λz|(((x(λg|(\
+    λh|(h(gs)))))(λu|z))(λu|u))))))x)))b)a)))))((λb|(λs|(λz|(sz)\
+    )))(λs|(λz|(s(s(s(sz))))))))F)(λx|(λy|x)))(λx|(λy|y))))(λx|(\
+    λy|y))))(λx|(λy|y)))))(λx|(λy|y)))))(λx|(λy|y))))(λx|(λy|y))\
+    ))(λx|(λy|y))))))))))))))))))
+
+(copy and pasted it into LVM REPL, make sure include the `\' mark
+at the end of each line, this prevent to read too long line and
+crashes the terminal)
+
+Example:
+Let the function as macro `#f':
+
+    .l(f) <the-function-expression-above>
+
+we say that:
+
+    #f #1 #2 #3
+
+returns true
+
+    (λxy|x) -> aka. #𝐓
+
+then the flag is `ucatflags{abc}'. also, consider
+input as:
+
+    #f #24 #25 #26
+
+then the flag should be `ucatflags{xyz}'.
+
+Note: in LVM REPL, read manual `.m(6)'.
+
+Note: you can save the lambda expression above to a file,
+for example `task-2-lambda-expr', and write something like:
+
+   .l(f) <lambda-expr>
+   #f <your-guess-for-the-flag>
+
+And then use pip to run the LVM REPL like this:
+
+   cat task-2-lambda-expr | python lvm_repl.py
+
+see the `task-2-lambda-expr' for details.
+
+Note: you may need a very large simplify depth set
+(by default it is `10240', recommanded) if you are
+using NORMAL order for calculation.
+
+  Also, using application order for calculation is
+  also okay, for example:
+
+  .a #f #1 #2 ... -> (λxy|x)
+
+Hardness: easy, but maybe little tricky, read below tips
+shall give you enough hints.
+
+Tips:
+consider a very simple example (for test only, NOT FLAG!)
+
+    .l(f) (λAB|(#≃A#1)((#≃B#2)#𝐓#𝐅)#𝐅)
+    #f #1 #2 -> (λxy|x) == #𝐓 -> flag will be ucatflags{12}
+
+More tips:
+have you try to evaluate the example above? have you try
+limit the simplify depth to 0 (`.d(0)'), 1 (`.d(1)') or
+else?
+
+More tips:
+what if the previous expression is imcomplete?
+
+More more tips:
+what if the previous imcomplete expression got wrong input?
+
+More more more tips:
+err, keyword: brute force, dynamic reverse.

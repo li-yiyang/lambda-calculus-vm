@@ -1,0 +1,95 @@
+[ﾟ∀ﾟ*] > python lvm_repl.py
+E HELLO LAMBDA CALCULUS VISUTAL MACHINE HELLO LAMBDA C
+N        L    V   V    M    M                        A
+I       L     V  V    M M  MM                        L
+H      L      V V    M  M M  M                       C
+C     LLLLLL   V    M   M    M          author: ryo  U
+AM LATUSIV SULUCLAC  ADBMAL OLLEH ENIHCAM LATUSIV SUL#
+
+Usage:
+  Input lambda calculus expression or .<command>.
+        see more help infomation with .h command.
+>>> .h
+Usage:
+  Commands:
+   * .m(n) -> print out LVM manual
+   * .t(n) -> print out UCATFLAGS task
+   * .f(x) <expr> -> test if x is free in <expr>
+   * .F(x) <expr> -> test if x is free for <expr> result
+   * .b(x) <expr> -> test if x is bounded in <expr>
+   * .B(x) <expr> -> test if x is bounded for <expr> result
+   * .l(s) <expr> -> set macro symbol with expr for replacement
+   * .L -> list all the macros and their bindings
+   * .d(n) -> set max simplify iter depth (=256)
+   * .h -> print help message
+   * .? -> print quick help message
+   * .p -> toggle prettify print (ON)
+   * .q -> quit LVM REPL
+   * .s -> toggle REPL prompt (ECHO)
+
+  Lambda Calculus Expression:
+   * x -> symbol
+   * (f x) -> application
+   * (λ x | <expr>) -> lambda calculus (function)
+
+  LVM REPL Macros:
+   * use `.l(s)' to define macros
+   * use `#s' to recall the macros
+   * use `#<num>' for church number macros
+   * Note that macros is replaced literally
+     during expression reading (not safe macro)
+
+  LVM REPL Comments:
+   * anything after `->' will be ignored
+
+  More Tips:
+   due to the limit of long line input, if you find
+   yourself unable to input long line to LVM REPL
+   you can try using pip or split the long line using
+   `\' mark at the end of input line.
+
+>>> .m(0)
+
+    LVM Manual Table of Contents
+====================================
+
+  0. LVM TOC
+  1. Lambda Calculus Definition
+  2. Free and Bounded Variable
+  3. Substitution Rules
+  4. Computation Rules
+  5. Church Number
+  6. Boolean Operation
+  7. Recursion
+  8. Credits
+
+Use `.m(1)' to open specific manual.
+>>> .m(1)
+    Lambda Calculus Definition
+==================================
+Syntax of Lambda Calculus Expression
+
+  <identifier>  := a|b|c|...|z|A|B|C|...|Z
+  <functioin>   := "(" λ <identifier>+ "|" <expression>+ ")"
+  <application> := "(" <expression> <expression>+ ")"
+  <expression>  := <identifier> | <function> | <application>
+  <top_level>   := <expression>+
+
+Example:
+  * x -> identifier, variable, symbol
+  * (λx|<expr>) -> lambda calculus function
+  * (f x) -> application
+
+Syntax Grammar:
+  * (λx|(λy|<expr>)) == (λxy|<expr>)
+  * ((<e1> <e2>) <e3>) == (<e1> <e2> <e3>)
+
+LVM REPL has good support for debugging interface:
+  * Token Error: raise when read unsupported token character
+  * Syntax Error: raise when token sequence raise syntax error
+
+More examples:
+You could try to eval them in LVM REPL and see the results:
+  * ((λx|xi)((λz|(λq|q)z)h)) -> (hi)
+  * (λx|(λx|(λx|xxx)(bx)x)(ax))c -> (b(ac)(b(ac))(b(ac))(ac))
+>>> ...

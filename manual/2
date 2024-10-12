@@ -1,0 +1,45 @@
+    Free and Bounded Variable
+=================================
+We call the symbol (or variable) `identifier' when it
+appears in as the argument list in the lambda calculus,
+for example:
+
+    (λx|<expr>) -> x is identifier
+
+When appling the lambda calculus on other expression,
+for example, `A', it will subsitute `x' with `A' in
+`<expr>'. So we could say the identifier in lambda
+calculus is a bounded symbol (variable), because
+during a function application a value is bound to it.
+
+Note: see `.m(3)' for the Subsitute Rule
+
+Definition 1: A bounded variable `x' for `E' should:
+1. E = (AB): x occurs bounded in either A or B;
+2. E = (λy|A): y == x and there is an instance of x in A;
+3. E = (λy|A): y != x and x occurs bound in A.
+
+Definition 2: A free variable `x' for `E' should:
+1. E = x;
+2. E = (λy|A), y != x and x occurs free in A;
+3. E = (AB) and x occurs free in either A or B.
+
+Note that a symbol (variable) could be either bounded or
+free in an expression.
+
+Example:
+Try these in LVM REPL
+  * .f(x) (xy) -> True
+  * .b(y) (λy|xy) -> True
+    .f(x) (λy|xy) -> True
+
+More examples:
+  * (y(λy|xy))
+    y Free and Bounded
+    x Free
+  * (λx|(xy)(λy|xy))
+    y Free and Bounded
+    x Bound
+  * (λx|xb(λx|xc))a
+    a, b, c Free
+    x Bounded

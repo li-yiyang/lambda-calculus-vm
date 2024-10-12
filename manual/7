@@ -1,0 +1,145 @@
+    Recursion
+=================
+A recursive function is one that invokes itself
+as a subfunction inside its own definition.
+
+We could define a `Y' combinator:
+
+Definition: Y combinator
+
+    .l(𝐘) (λy|((λx|y(xx))(λx|y(xx))))
+
+   Example:
+     .d(1)
+     #𝐘 R -> ((λy|(λx|y(xx))(λx|y(xx)))R)
+     .d(2)
+     #𝐘 R -> (R((λx|R(xx))(λx|R(xx))))
+     .d(3)
+     #𝐘 R -> (R(R(R((λx|R(xx))(λx|R(xx))))))
+
+so consider #𝐘 R A, where R is a lambda calculus
+with two argument:
+
+  .l(R) (λxy|<expr>)
+
+so #𝐘 #R A will be expanded into:
+
+  .d(1)
+  #𝐘 #R A -> #R (#𝐘 #R) A
+
+So we could define iterate function like above:
+
+  -> sum(n) = 0 if zerop(n) else n + (n - 1)
+  .l(s) #𝐘 (λ R n | (#ζ n) #0 (#+ n (R (#𝐩 n))))
+
+  Example:
+    * #s #0 -> (λsz|z)        == #0
+    * #s #1 -> (λsz|sz)       == #1
+    * #s #2 -> (λyz|y(y(yz))) == #3
+
+  Note: if you cannot get the result, may be
+  try to increase the simplify depth limit,
+  for example, `.d(10240)' or more.
+
+  Warning: make sure you are using NORMAL
+  order (see `.m(4)' for details) when
+  computing. Because large simplify depth
+  will crash Python's recursion limit.
+
+It should apply on any number argument variables
+function `R', like below:
+
+    .l(R) (λ f a b c d | <expr>)
+    #𝐘 #R A B C D -> #R (#𝐘 #R) A B C D
+
+Example: Ackermann's function
+  A(x, y) = if x = 0  y + 1
+            if y = 0  A(x - 1, 1)
+            otherwise A(x - 1, A(x, y - 1))
+
+  .l(A) #𝐘 (λ Axy | ( (#ζ x) (#+ y #1)           \ -> x = 0, y + 1
+                     ((#ζ y) (A (#𝐩 x) #1)       \ -> y = 0, A(x - 1, 1)
+                      (A (#𝐩 x) (A x (#𝐩 y)))))) \ -> else,  A(x - 1, A(x, y - 1))
+
+  Example:
+    * #A #0 #1 -> (λyz|y(yz)) = #2
+    * #A #1 #0 -> (λyz|y(yz)) = A(0, 1) = #2
+    * #A #1 #1 -> (λyz|y(y(yz))) = A(0, A(1, 0)) = A(0, 2) = 3
+    * ...
+
+  Note: the computation time of ackermann's function
+  will increase greatly, calculate too much like
+    #A #3 #2
+  may fail to give the answer within small simplify
+  depth limit (please be CARE when using APPLICATION
+  order computation).
+
+Now we have the abilities to deal with infinite
+data, but how we could pass in infinite, or at least,
+any length input?
+
+We could define the list data structure:
+
+Define: Cons
+
+    [A B] -> (λ x | x A B)
+    .l(𝐜) (λ A B | (λ x | x A B)) -> cons
+
+Define: Car and Cdr
+
+    .l(𝐚) (λ x | x (λ ab | a)) -> car: get first  of cons
+    .l(𝐝) (λ x | x (λ ab | b)) -> cdr: get second of cons
+
+We could say that a list is a nested cons:
+
+  ( car, cdr )
+          |
+          V
+       ( car, cdr )
+               |
+               V
+            ( car, ... )
+
+Now we define a special element called Nil as the
+end of list:
+
+Define: Nil
+
+    .l(𝐧) (λ x a b | a) -> Nil
+
+Define: Nilp
+
+    .l(𝐍) (λ n | n (λAB|#𝐅))
+  Example:
+    #𝐍 #𝐧       -> #𝐓
+    #𝐍 (#𝐜 A B) -> #𝐅
+
+So the list is: (we have grammar sugar for it)
+
+   [e1 e2 e3] -> (e1 (e2 (e3 nil)))
+
+Example: (eval in LVM REPL)
+
+  * #𝐚 [#1 #2 #3]        -> (λsz|sz)    == #1 ;; first
+  * #𝐚 (#𝐝 [#1 #2 #3])   -> (λsz|s(sz)) == #2 ;; second
+  * so on
+
+Also, we define the `string' as below:
+
+   "[a-zA-Z]*"
+
+which will be parsed as a char list. And we define
+the character `a' to be `#1', `b' to be `#2'...
+`A' to be `#27', `B' to be `#28'...
+
+Example:
+  * "" -> #𝐧 ;; #𝐍 "" -> #𝐓
+  * length counting function
+
+        .l(𝐥) #𝐘 (λ f s | (#𝐍 s) #0 (#𝐬 (f (#𝐝 s))))
+
+    Example:
+      * #𝐥 ""            -> #0
+      * #𝐥 []            -> #0
+      * #𝐥 "abcd"        -> #4
+      * #𝐥 [#1 #2 #2 #4] -> #4

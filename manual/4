@@ -1,0 +1,131 @@
+    Computation Rules
+=========================
+Though the basic lambda calculus execution mechanism
+"replaces" one expression by another by substituting
+an argument into a function.
+
+  Example: compute on application
+    if expr.application_p():
+        fn, arg = expr.fn_expr(), expr.arg_expr()
+        return substitute_ast(fn.fn_body(), fn.identifier(), arg)
+
+We could say the expression before and after reduction
+shall be the same expression. So we could define that
+two expression `A' and `B' is same if serval reductions
+applied on expression `A' returns expression `B'.
+
+Definition: α conversion (renaming for formal identifiers)
+  If y not free in E, then (λ x | E) -> (λ y | [y/x] E)
+  Example: (λ x | x z x) -> (λ y | y z y)
+
+Definition: β conversion (application)
+  (λ x | E) A -> [A/x] E (with renaming in E)
+
+Definition: η conversion (optimization)
+  If x not free in E then (λ x | E x) -> E
+  Prove: (λ x | E x) A -> E A
+
+Definition: Normal Order
+No more β or η reductions are possible.
+
+A trivial question is that, how to ensure that different
+conversion sequence will always leads to a same expression?
+
+Theorem: Church-Rosser Theorem I
+If expression `A' can be reduced to two different expression
+`B' and `C', then there is always other expression `D' that
+`B' and `C' can both reduced to.
+
+Theorem: Church-Rosser Theorem II
+If `A' -> `B' (reduces) by some sequence, and `B' is in
+normal order, then we can get from `A' to `B' by doing
+leftmost reduction at each step.
+  Note: leftmost reduction
+    * leftmost: position of start of the application in
+      the text string representing the expression
+    * reduction: only β and η reduction
+
+So we could define the first reduction method:
+
+Method 1: Normal order reduction
+locates the leftmost function that is involved in
+an application, and substitutes unchanged copies
+of the argument expreesion into the function's body.
+No reductions are preformed on the argument until
+after this substitution.
+  Pseudocode:
+    while ast_has_application_p(ast):
+        ast = leftmost_reduction(ast)
+    return ast
+
+As the above theorem proved, normal order reduction
+will always return the normal order expression of
+our lambda calculus expression (though it may not
+be efficient at some situation).
+  Example:
+    (λx|#+xx) (#+ #1 #1)
+    -> #+ (#+ #1 #1) (#+ #1 #1)
+    -> #+ #2 #2
+    -> #4
+    it will introduce some extra calculation,
+    so it is not efficient at some times.
+
+Method 2: Application order reduction
+Reduces the argument (and potentially the body of
+the function) separately and completely before
+doing the function application and its required
+substitution. When the function body is reduced
+before the application, whether it or the argument
+is reduced first is immaterial.
+  Pseudocode: simplify
+    if ast.terminate_p():
+       return ast
+    elif ast.application_p():
+       fn, arg = simplify(ast.fn_expr()), simplify(ast.arg_expr())
+       return substitute_ast(fn.body(), fn.identifier(), arg)
+    elif ast.function_p():
+       body = ast.fn_body()
+       if not body.free_p(ast.identifier()): # eta
+           return body
+       else:
+           return AST("λ", ast.identifier(), body)
+
+This way is much faster because it saves some extra
+calculation when dealing with some expression.
+However, we could also notice that if we construct
+some specific expression, the application order
+reduction will stuck in infinite loop.
+
+In the real programming language, both two reduction
+rules could be used (normal rules -> macro, application
+rule -> function application). Here we will not
+use such complexed mixed model to show how to calculate
+the lambda calculus expression. You could just know
+that:
+
+  The default LVM compution rule follows normal order
+  reduction.
+
+  If you want to use application order reduction,
+  just prefix `.a' command at each expression.
+
+  Or you can use `.A' command to switch between
+  normal order reduction and application order
+  reduction.
+
+Note:
+If you want to now each step of Lambda Calculus
+Reduction, set the max simplify iter depth to `1'
+in LVM REPL: `.d(1)'. (by default it is `∞',
+which means set no limit to the reduction times).
+Or, it's better to use `.D <expr>' for single
+step calculation.
+
+Note:
+If you set `.d(0)', what you input will return
+same as not computed. 
+
+Example:
+  * (λf|p(ft)(fy))(λx|mxx)
+    -> (p((λx|mxx)t)((λx|mxx)y))
+    -> (p(mtt)(myy))

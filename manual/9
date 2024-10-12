@@ -1,0 +1,44 @@
+    More about Lambda Calculus If You're Interested
+=======================================================
+So for now you shall be equipped with enough knowledge
+to construct, or at least, how to use the basic parts
+to make larger programs.
+
+Since you can NOT always count on LVM REPL's macro for
+inputing with ease. Becasue the LVM REPL macro is not
+a SAFE macro and could somethings brings in danger.
+You may consider writing your own parser for lambda
+calculus or you can just use your language's builtin
+support for lambda function: (Python, for example)
+
+    lambda x : x # (λx|x)
+
+Sure it's much more easier to compute (you don't have
+to write the reduction rules yourself, the interpreter
+will handle it for you). Also it makes possible to
+programmatically generate the lambda expression.
+
+So a trivial idea is that: can you write a parser
+from a language to lambda calculus? Of course you
+can do it. Then it's interesting that how to use
+the lambda calculus to self interpret lambda
+calculus? Is it possible? Of course it is possible.
+
+You may ask that is it really meaningful or having
+engineering value? It is. If you consider the
+APPLICATION order computation, you may found that
+the calculation could be splitted into serval
+parallel process, making it faster to calculate.
+Which was done as what now GPU computing like.
+(you can write the program, simplify the compute
+graph, generate and passing each compute branch
+in the graph to each single unit of compute process)
+
+But if you want something more relevant with
+CTF? I think you've seen enough in `.t(.)'.
+As you could see, program in lambda calculus is
+hard to reverse. And since it's not a regular
+computation model, you can hardly read out it
+at the first time (even if you're expert in asm).
+And with proper obfuscate process, the code
+would be more difficult to read.

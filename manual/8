@@ -1,0 +1,22 @@
+    Credits
+================
+Reference:
+  * Peter Kogge, The Architecture of Symbolic Computers
+
+    note: recommanded reading first two chapter if
+    you are unfamiliar with the computation (programming).
+    then the 4th chapter for lambda calculus. 
+  * Alonzo Church, The Calculi of Lambda Conversion
+
+    note: https://li-yiyang.github.io/reading/calculi-of-lambda-conversion/
+    this is not complete yet, but this work (LVM REPL)
+    should be enough as an appendix note
+  * John McCarthy, etc, Recursive Functions of Symbolic
+    Expressions and Their Computation by Machine, Part I
+
+    note: https://li-yiyang.github.io/misc/basic-emacs-for-those-who-are-free/
+    search for the folded detailed explanation notes in
+    the blog post
+
+    more: https://li-yiyang.github.io/lisp/from-linked-list-to-the-old-yet-modern-computer/
+    more: https://li-yiyang.github.io/lisp/from-linked-list-to-the-old-yet-modern-computer-2/

@@ -1,0 +1,32 @@
+    Substitution Rules
+==========================
+When we apply the argument on the function,
+what we do is to substitute the bounded identifier
+appeared in the function body expression.
+
+The substitute should follow the rules below:
+
+Rule: Substitute symbol `x' by expression `A'
+for expression `E'. Denote the subsitute process
+as [A/x]E -> E'.
+1. E is a symbol `y':
+   * y == x: E = A
+   * y != x: E' = E
+2. E is application form (BC)
+   E' = (([A/x]B)([A/x]C))
+3. E is lambda calculus form (λy|C)
+   * y == x: E' = E
+   * y != x and y does not occur free in A:
+     E' = (λy|[A/x]C)
+   * otherwise (i.e. y occurs free in A) [RENAME RULE]
+     E' = (λz|[A/x]([Z/y]C)), where `z' is a new symbol
+     never used before (not free in A)
+
+Example:
+Run it in LVM REPL.
+  * (λx|x)M -> M
+  * (λx|y)M -> y
+  * (λx|xyx)M -> (MyM)
+  * (λx|(λx|xN))M -> (λx|xN)
+  * (λx|(λy|xyN))M -> (λx|MyN)
+  * (λx|(λy|xyN))(ay) -> (λb|aybN)

@@ -1,0 +1,21 @@
+    LVM 1: Church Number
+============================
+The flag shall in form like `ucatflags{<int>}'.
+The `<int>' shall be the result integer value of
+the following lambda calculus expression.
+
+    (((λa|(λb|(((λx|(λy|((y(λx|(λy|(λz|(y((xy)z))))))x)))(((λx|(λy|((y(λx|(λy|(λz|(y((xy)z))))))x)))(((λx|(λy|(λs|(x(ys)))))((λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u)))))a))(((λb|(λe|(eb)))b)((λx|(λs|(λz|(((x(λg|(λh|(h(gs)))))(λu|z))(λu|u)))))a))))a))(((λx|(λy|(λs|(x(ys)))))a)b))))(λs|(λz|(s(s(sz))))))(λs|(λz|(s(s(s(s(s(s(s(s(s(sz)))))))))))))
+
+Example:
+If the result value (church number) is:
+    (λsz|s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(sz))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+The flag is:
+    flag{52}
+
+Note: see LVM REPL manual with `.m(5)', if you are
+new to Lambda Calculus, read from manual `.m(1)'.
+
+Hardness: this is very easy.
+
+Tips: C-c, C-v, count

@@ -1,0 +1,27 @@
+    Lambda Calculus Definition
+==================================
+Syntax of Lambda Calculus Expression
+
+  <identifier>  := a|b|c|...|z|A|B|C|...|Z
+  <functioin>   := "(" λ <identifier>+ "|" <expression>+ ")"
+  <application> := "(" <expression> <expression>+ ")"
+  <expression>  := <identifier> | <function> | <application>
+  <top_level>   := <expression>+
+
+Example:
+  * x -> identifier, variable, symbol
+  * (λx|<expr>) -> lambda calculus function
+  * (f x) -> application
+
+Syntax Grammar:
+  * (λx|(λy|<expr>)) == (λxy|<expr>)
+  * ((<e1> <e2>) <e3>) == (<e1> <e2> <e3>)
+
+LVM REPL has good support for debugging interface:
+  * Token Error: raise when read unsupported token character
+  * Syntax Error: raise when token sequence raise syntax error
+
+More examples:
+You could try to eval them in LVM REPL and see the results:
+  * ((λx|xi)((λz|(λq|q)z)h)) -> (hi)
+  * (λx|(λx|(λx|xxx)(bx)x)(ax))c -> (b(ac)(b(ac))(b(ac))(ac))

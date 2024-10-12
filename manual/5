@@ -1,0 +1,87 @@
+    Church Number
+=====================
+To step up a description for arithmetic number,
+we could define what the integer 0 looks like,
+and a function s (successor function) which
+when given an integer k, produces an expression
+for the integer k + 1.
+
+Definition 1: the integer 0
+
+  #0 = (λsz|z)
+
+Definition 2: the succesor function s
+(Note: run it in LVM REPL)
+
+  .l(𝐬) (λxyz|y(xyz)) -> successor
+
+So number 1 should be:
+(check it in LVM REPL)
+
+  #1 == (λsz|sz) == #𝐬 #0 == (λyz|yz)
+
+Shall be same for all integer number.
+
+So on, we could define more arithmetic operations:
+
+Definition 3: addition function
+
+  .l(+) (λjk|k#𝐬j) -> addition
+
+  Example:
+    * #+#1#2 = (λyz|y(y(yz))) == (λsz|s(s(sz)))
+
+Definition 4: multiplication function
+
+  .l(×) (λxys|x(ys)) -> multiplication
+
+  Example:
+    * #×#0#3 = (λsz|z)           == #0
+    * #×#1#3 = (λsz|s(s(sz)))    == #3
+    * #×#2#2 = (λsz|s(s(s(sz)))) == #4
+
+Definition 5: predecessor
+  Note: return 0 if zerop(x) else x - 1
+
+  .l(𝐩) (λxsz|x(λgh|h(gs))(λu|z)(λu|u)) -> predecessor
+
+  Example:
+    * #𝐩#0 -> (λsz|z)  == #0
+    * #𝐩#1 -> (λsz|z)  == #0
+    * #𝐩#2 -> (λsz|sz) == #1
+
+Definition 6: subtraction (monus)
+
+  .l(∸) (λxy|y#𝐩x) -> monus subtraction
+
+  Example:
+    * #∸#2#1 -> (λsa|sa) == #1
+    * #∸#1#2 -> (λsb|b)  == #0
+
+Definition 7: exponentiation
+
+  .l(𝕖) (λbe|eb) -> b^e exp
+
+  Example:
+    * #𝕖#1#2 -> (λzb|zb)          == #1
+    * #𝕖#2#2 -> (λzb|z(z(z(zb)))) == #4
+    * #𝕖#2#2 -> (λza|z(za))       == #2
+
+Example 1:
+Please try to give the flag like `flag{<num>}'.
+
+e.g.
+The number is:
+    (λsz|s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(s(sz))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+The flag is:
+    flag{52}
+
+Tips:
+as you may notice, the Python is not built for such heavy
+recursion task, (the default recursion limit is only 1000!),
+which means that the church number representation has
+poor performance and chould easily broke Python's recursion
+limit. (also, this also have some fault on my simple parser)
+You could just use brute force to guess every possible
+integer to guess the flag if you want.

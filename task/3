@@ -1,3 +1,163 @@
     LVM 3: Recursion
 ========================
-Now you knowz
+Note: this is not a FLAG task (because it is
+a little difficult, but you may have a try).
+You can do this just for fun.
+
+Now you know how to deal with infinite data input.
+Using the recursion together with cons (list)
+structure will help you do anything you may want.
+
+So let's try a simple `eq' function:
+
+Definition:
+  assuming a, b is a list of "string"
+  eq[a, b] = T if a == b else F
+
+Implementation (Python):
+  def eq(a, b):
+      if endp(a) and endp(b):
+          return T
+      elif car(a) == car(b):
+          eq(cdr(a), cdr(b))
+      else:
+          return F
+
+So let's try to implement it in LVM REPL:
+Note: I use the cheat sheet defined in `.m(10)`.
+Copy them and paste them like this:
+
+>>>   .s
+  .l(𝕤) (λxyz|y(xyz))                   -> successor
+  .l(+) (λjk|k#𝕤j)                      -> addition
+  .l(×) (λxys|x(ys))                    -> multiplication
+  .l(𝕡) (λxsz|x(λgh|h(gs))(λu|z)(λu|u)) -> predecessor
+  .l(∸) (λxy|y#𝕡x)                      -> monus subtraction
+  .l(𝕖) (λbe|eb)                        -> b^e exp
+  .l(𝕋) (λxy|x)                         -> true
+  .l(𝔽) (λxy|y)                         -> false
+  .l(¬) (λw|w#𝔽#𝕋)                      -> not
+  .l(∧) (λwz|wz#𝔽)                      -> and
+  .l(∨) (λwz|w#𝕋z)                      -> or
+  .l(ζ) (λx|x #𝔽 #¬ #𝔽)                 -> zerop
+  .l(𝕐) (λy|((λx|y(xx))(λx|y(xx))))     -> Y combinator
+  .l(𝕔) (λ A B | (λ x | x A B))         -> cons
+  .l(𝕒) (λ x | x (λ ab | a))            -> car: get first  of cons
+  .l(𝕕) (λ x | x (λ ab | b))            -> cdr: get second of cons
+  .l(𝕟) (λ x a b | a)                   -> Nil
+  .l(ℕ) (λ n | n (λAB|#𝔽))              -> Nilp
+  .s
+Now silent is ON
+Now silent is OFF
+
+So let's define the `eq' function as macro `#≑':
+
+    .l(=) (λ J K | #∧ (#ζ (#∸ J K)) (#ζ (#∸ K J)))
+    .l(≑) #𝕐 (λ f X Y |                          \ -> f(X, Y)
+               ((#∧ (#ℕ X) (#ℕ Y))               \ -> if nilp(X) and nilp(Y)
+                #𝕋                               \ ->   return T
+                ((#= (#𝕒 X) (#𝕒 Y))              \ -> elif car(X) == car(Y)
+                 (f (#𝕕 X) (#𝕕 Y))               \ ->   return f(cdr(A), cdr(B))
+                 #𝔽)))                           \ -> else return F
+
+Test:
+>>> #≑ "AB" "AB"
+(λxy|x)
+>>> #≑ "AB" "ABC"
+(λxy|y)
+
+Note: this may take a long time to compute.
+If you have a way to compile it into byte code
+(for example, in Common Lisp SBCL, lambda would
+be compiled into byte code), it would calculte
+much faster than current Python version.
+
+So now you can compare two "symbol" if
+they are equal. We can use those symbols
+as the fundamental blocks for our final
+architectures.
+
+You may ask, so what's for? Let me show you
+an example: you can define the following
+data structure:
+
+Define: a data is like:
+
+    cons[type-hint, value]
+
+Then we can have:
++ atom function: (atom as type 0)
+
+  .l(⚛) (λ E | #ζ (#𝕒 E))
+
++ listp function: (list as type 1)
+
+  .l(⛓) (λ E | (#= #1 (#𝕒 E)))
+
+We can write a parser from string to read all those
+data type from a string, for example, we could
+denote a symbol as all downcase word:
+
+Define: atom symbol is a word made of downcase letters
+
+and define the list as a list of atom symbol:
+
+Define: a list is a set of symbol separated by `W',
+surrounded by `C' and `D'.
+
+Example:
+
+    "CthisWisWaWClistWofWlistDD"
+
+  should be recognized as list:
+
+    ["this", "is", "a", ["list", "of", "list"]]
+
+You may make a tokenizer like:
+
+    def tokenrize_1(string, temp):
+        if car(string) == car("C"):
+            if nilp(temp):
+                return cons("C", tokenrize_1(cdr(string), NIL))
+            else:
+                return cons("C", cons(reverse(temp), tokenrize_1(cdr(string), NIL)))
+        elif car(string) == car("D"):
+            if nilp(temp):
+                return cons("D", tokenrize_1(cdr(string), NIL))
+            else:
+                return cons("D", cons(reverse(temp), tokenrize_1(cdr(string), NIL)))
+        elif car(string) == car("W"):
+            return cons(reverse(temp), tokenrize_1(cdr(string), NIL))
+        elif endp(string):
+            if nilp(temp):
+                return reverse(temp)
+            else:
+                return NIL
+        else:
+            # push to temp, reversed
+            return tokenrize_1(cdr(string), cons(car(string), temp))
+
+    def tokenrize(string):
+        return tokenrize_1(string, NIL)
+
+    # ...
+
+Then you can make a parser from the tokenizer.
+After that, you can make a interpreter of you own
+language based on LVM.
+
+You may refer:
++ From Linked List to the Old Yet Modern Computer [S1]
+  https://li-yiyang.github.io/lisp/from-linked-list-to-the-old-yet-modern-computer/
++ From Linked List to the Old Yet Modern Computer [S2]
+  https://li-yiyang.github.io/lisp/from-linked-list-to-the-old-yet-modern-computer-2/
++ Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I
+  http://jmc.stanford.edu/articles/recursive/recursive.pdf
++ mal (Make A Lisp)
+  https://github.com/kanaka/mal
+
+Enjoy yourself and have challenges!
+
+Note: if you finished writing your own programming language on
+LVM, you can also write a LVM assembler on your programming
+language. We call this bootstrap. 

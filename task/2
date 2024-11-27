@@ -1,4 +1,4 @@
-    LVM 1: Boolean
+    LVM 2: Boolean
 ======================
 Here is a flag testing lambda calculus function:
 
@@ -153,7 +153,7 @@ Tips:
 consider a very simple example (for test only, NOT FLAG!)
 
     .l(f) (λAB|(#≃A#1)((#≃B#2)#𝐓#𝐅)#𝐅)
-    #f #1 #2 -> (λxy|x) == #𝐓 -> flag will be ucatflags{12}
+    #f #1 #2 -> (λxy|x) == #𝐓 -> flag will be ucatflags{ab}
 
 More tips:
 have you try to evaluate the example above? have you try

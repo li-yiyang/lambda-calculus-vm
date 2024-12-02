@@ -152,8 +152,18 @@ shall give you enough hints.
 Tips:
 consider a very simple example (for test only, NOT FLAG!)
 
-    .l(f) (λAB|(#≃A#1)((#≃B#2)#𝐓#𝐅)#𝐅)
-    #f #1 #2 -> (λxy|x) == #𝐓 -> flag will be ucatflags{ab}
+    .l(𝕋) (λxy|x)                         -> true
+    .l(𝔽) (λxy|y)                         -> false
+    .l(¬) (λw|w#𝔽#𝕋)                      -> not
+    .l(𝕡) (λxsz|x(λgh|h(gs))(λu|z)(λu|u)) -> predecessor
+    .l(∸) (λxy|y#𝕡x)                      -> monus subtraction
+    .l(∧) (λwz|wz#𝔽)                      -> and
+    .l(∨) (λwz|w#𝕋z)                      -> or
+    .l(ζ) (λx|x #𝔽 #¬ #𝔽)                 -> zerop
+    .l(≃) (λJK|(#∧(#ζ(#∸JK))(#ζ(#∸KJ))))  -> equal: J = K <=> J ∸ K == 0 && K ∸ J == 0
+    .l(f) (λAB|(#≃A#1)((#≃B#2)#𝕋#𝔽)#𝔽)    -> validate function
+    #f #2 #4 -> (λxy|y) == #𝔽 -> flag is not ucatflags{bd}
+    #f #1 #2 -> (λxy|x) == #𝕋 -> flag will be ucatflags{ab}
 
 More tips:
 have you try to evaluate the example above? have you try

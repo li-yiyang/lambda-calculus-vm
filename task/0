@@ -2,6 +2,8 @@
 =======================
 
   0. TOC
-  1. LVM 0: Church Number
-  2. LVM 1: Boolean
-  3. LVM 3: Recursion
+  1. LVM 1: Church Number
+  2. LVM 2: Boolean
+  3. LVM ?: if you have time, read this
+  4. LVM 0: git clone https://github.com/li-yiyang/lambda-calculus-vm.git
+            and find the flag

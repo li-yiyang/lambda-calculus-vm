@@ -1,0 +1,47 @@
+    LVM 1: Church Number Writeup
+====================================
+Just copy it and paste it into LVM REPL, the
+result is:
+
+    (λyb|y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(y(yb)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+If you want, you could count by hand (233).
+
+Or you could just use a more simplier program
+to count the `y' to convert church number to
+integer:
+
+    def church_number_to_integer(expr : str, sym : str = "y") -> int:
+        count = 0
+        for char in expr:   # for all the characters in `expr'
+            if char == sym: # if has `sym' symbol appearance
+               count += 1   # increase count for `sym'
+        return count - 1    # remove `sym' count in identifier list
+
+So the real number is `233'. (see `1.py' for details)
+
+Or if you thought it was not strictly enough,
+you could also use `parse.py' to do the AST.
+
+More: the task was made by the following code.
+
+    .p                                    -> trun off pretty print
+    .l(𝐬) (λxyz|y(xyz))                   -> successor
+    .l(𝐩) (λxsz|x(λgh|h(gs))(λu|z)(λu|u)) -> predecessor
+    .l(+) (λxy|y#𝐬x)                      -> addition
+    .l(×) (λxys|x(ys))                    -> multiplication
+    .l(∸) (λxy|y#𝐩x)                      -> monus subtraction
+    .l(𝐞) (λbe|eb)                        -> b^e exp
+    .d(0)                                 -> set recursion to 0
+    ((λab|(#+ (#+ (#× (#𝐩 a) (#𝐞 b (#𝐩 a))) a) (#× a b))) #3 #10) -> ((((3 - 1) * (10 ^ (3 - 1))) + 3) + (3 * 10))
+
+Tips: here hides some drawbacks of literal macro,
+if you just use expression
+
+    ((λxy|(#+(#+(#×(#𝐩x)(#𝐞y(#𝐩x)))x)(#×xy)))#3#10)
+
+The result is wrong: (λa|(λz|(a((aa)z)))), because simple
+macro is just literally replacing string and has no
+safty check for AST and context.
+
+Want something more safe? See Lisp macro.
